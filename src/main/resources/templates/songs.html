@@ -9,8 +9,19 @@
 <body>
     <div th:include="navbar :: navbar"></div>
     <div class="all-body container">
+        <div class="section-intro">
+            <h2 class="featured-heading">All Songs</h2>
+            <form class="form-inline search" action="/songs" method="post">
+                <div class="form-group search-group">
+                    <label for="search">Search By Song Name: </label>
+                    <input type="text" class="form-control" name="search" id="search" placeholder="Name of Song"/>
+                    <button type="submit" class="btn btn-danger">Search</button>
+                    <a href="/songs" type="button" class="btn btn-danger">Reset Search</a>
+                </div>
+            </form>
+            <span class="edit-btn"><a href="/songs/add" type="button" class="btn btn-danger">Add a New Song</a></span>
+        </div>
         <div class="all-songs">
-            <h2>All Songs</h2>
             <div class="row">
                 <div th:each="song : ${songs}" class="col-sm-6 col-md-4">
                     <div class="thumbnail">

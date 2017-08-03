@@ -41,7 +41,7 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/bands")
+    @RequestMapping(value = "/bands", method = RequestMethod.GET)
     public String bands (Model model) {
         Iterable<Band> bands = bandRepo.findAll();
         model.addAttribute("bands", bands);
@@ -56,7 +56,7 @@ public class IndexController {
         return "bands";
     }
 
-    @RequestMapping("/bands/add")
+    @RequestMapping(value = "/bands/add", method = RequestMethod.GET)
     public String addBands () {
 
         return "addBands";
@@ -81,14 +81,22 @@ public class IndexController {
         return "redirect:/bands";
     }
 
-    @RequestMapping("/albums")
+    @RequestMapping(value = "/albums", method = RequestMethod.GET)
     public String albums (Model model) {
         Iterable<Album> albums = albumRepo.findAll();
         model.addAttribute("albums", albums);
         return "albums";
     }
 
-    @RequestMapping("/albums/add")
+    @RequestMapping(value = "/albums", method = RequestMethod.POST)
+    public String albumsSearch (@RequestParam("search") String nameSearch,
+                               Model model) {
+        List<Album> albums = albumRepo.findByName(nameSearch);
+        model.addAttribute("albums", albums);
+        return "albums";
+    }
+
+    @RequestMapping(value = "/albums/add", method = RequestMethod.GET)
     public String addAlbums (Model model) {
         Iterable<Band> bands = bandRepo.findAll();
         model.addAttribute("bands", bands);
@@ -116,14 +124,22 @@ public class IndexController {
 
     }
 
-    @RequestMapping("/songs")
+    @RequestMapping(value = "/songs", method = RequestMethod.GET)
     public String songs (Model model) {
         Iterable<Song> songs = songRepo.findAll();
         model.addAttribute("songs", songs);
         return "songs";
     }
 
-    @RequestMapping("/songs/add")
+    @RequestMapping(value = "/songs", method = RequestMethod.POST)
+    public String songsSearch (@RequestParam("search") String nameSearch,
+                               Model model) {
+        List<Song> songs = songRepo.findByName(nameSearch);
+        model.addAttribute("songs", songs);
+        return "songs";
+    }
+
+    @RequestMapping(value = "/songs/add", method = RequestMethod.GET)
     public String addSongs (Model model) {
         Iterable<Band> bands = bandRepo.findAll();
         model.addAttribute("bands", bands);
