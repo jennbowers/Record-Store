@@ -84,6 +84,27 @@ public class IndexController {
         return "addAlbums";
     }
 
+    @RequestMapping(value = "/albums/add", method = RequestMethod.POST)
+    public String addAlbumsPost (@RequestParam("band") long bandId,
+                                 @RequestParam("name") String name,
+                                 @RequestParam("genre") String genre,
+                                 @RequestParam("yearReleased") int yearReleased,
+                                 @RequestParam("label") String label,
+                                 @RequestParam("imgUrl") String imgUrl) {
+        Band band = bandRepo.findOne(bandId);
+        Album newAlbum = new Album();
+        newAlbum.setBand(band);
+        newAlbum.setName(name);
+        newAlbum.setGenre(genre);
+        newAlbum.setYearReleased(yearReleased);
+        newAlbum.setLabel(label);
+        newAlbum.setImgUrl(imgUrl);
+        albumRepo.save(newAlbum);
+
+        return "redirect:/albums";
+
+    }
+
     @RequestMapping("/songs")
     public String songs (Model model) {
         Iterable<Song> songs = songRepo.findAll();
