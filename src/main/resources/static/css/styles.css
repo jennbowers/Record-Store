@@ -1,3 +1,17 @@
 .all-body {
     padding-top: 70px;
 }
+
+.section-intro {
+    display: block;
+    padding-bottom: 25px;
+    padding-top: 20px;
+}
+
+.featured-heading {
+    display: inline;
+}
+
+.edit-btn {
+    float: right;
+}

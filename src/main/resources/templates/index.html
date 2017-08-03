@@ -10,7 +10,10 @@
     <div th:include="navbar :: navbar"></div>
     <div class="all-body container">
         <div class="all-bands">
-            <h2>Featured Bands </h2>
+            <div class="section-intro">
+                <h2 class="featured-heading">Featured Bands</h2>
+                <span class="edit-btn"><a href="/bands" type="button" class="btn btn-danger">See All Bands</a></span>
+            </div>
             <div class="row">
                 <!--https://stackoverflow.com/questions/33948685/spring-thymeleaf-show-last-two-elements-from-list-->
                 <div th:each="band, iterStat : ${bands}" th:if="${iterStat.index >= iterStat.size-3}" class="col-sm-6 col-md-4">
@@ -34,7 +37,10 @@
         </div>
         <hr/>
         <div class="all-albums">
-            <h2>Featured Albums</h2>
+            <div class="section-intro">
+                <h2 class="featured-heading">Featured Albums</h2>
+                <span class="edit-btn"><a href="/albums" type="button" class="btn btn-danger">See All Albums</a></span>
+            </div>
             <div class="row">
                 <div th:each="album, iterStat : ${albums}" th:if="${iterStat.index >= iterStat.size-3}"  class="col-sm-6 col-md-4">
                     <div class="thumbnail">
@@ -65,7 +71,10 @@
         </div>
         <hr/>
         <div class="all-songs">
-            <h2>Featured Songs</h2>
+            <div class="section-intro">
+                <h2 class="featured-heading">Featured Songs</h2>
+                <span class="edit-btn"><a href="/songs" type="button" class="btn btn-danger">See All Songs</a></span>
+            </div>
             <div class="row">
                 <div th:each="song, iterStat : ${songs}" th:if="${iterStat.index >= iterStat.size-3}"  class="col-sm-6 col-md-4">
                     <div class="thumbnail">
