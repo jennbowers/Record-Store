@@ -9,7 +9,7 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private double length;
+    private String length;
 
     @ManyToOne
     @JoinColumn(name = "band_id")
@@ -21,7 +21,7 @@ public class Song {
 
     public Song() {}
 
-    public Song(String name, double length, Band band, Album album) {
+    public Song(String name, String length, Band band, Album album) {
         this.name = name;
         this.length = length;
         this.band = band;
@@ -44,11 +44,11 @@ public class Song {
         this.name = name;
     }
 
-    public double getLength() {
+    public String getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(String length) {
         this.length = length;
     }
 
