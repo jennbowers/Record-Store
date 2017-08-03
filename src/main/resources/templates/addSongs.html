@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add a Song</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<div th:include="navbar :: navbar"></div>
+<div class="all-body container">
+    <h1>Add a New Song</h1>
+    <form class="form-horizontal" action="/songs/add" method="post">
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <p class="disclaimer-msg">Don't see the band you're looking for? <a type="button" class="btn btn-primary btn-xs" href="/bands/add">Add Them Here!</a></p>
+            </div>
+            <label class="col-sm-2 control-label" for="band-name">Band Name:</label>
+            <div class="col-sm-10" id="band-name">
+                <select class="form-control">
+                    <option th:text="${band.name}" th:each="band : ${bands}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <p class="disclaimer-msg">Don't see the album you're looking for? <a type="button" class="btn btn-primary btn-xs" href="/albums/add">Add It Here!</a></p>
+            </div>
+            <label class="col-sm-2 control-label" for="band-name">Album Name:</label>
+            <div class="col-sm-10" id="band-name">
+                <select class="form-control">
+                    <option th:text="${band.name}" th:each="band : ${bands}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">Album Name:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" id="name"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="genre">Album Genre:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="genre" id="genre"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="year-released">Year Released:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="yearReleased" id="year-released"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="label">Label Name:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="label" id="label"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="img-url">Album Artwork Url:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="imgUrl" id="img-url"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-danger">Add Album</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+<script type="application/javascript" th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script type="application/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</body>
+</html>
