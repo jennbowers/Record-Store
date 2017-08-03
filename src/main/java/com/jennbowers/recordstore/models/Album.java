@@ -10,9 +10,11 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    @Column(name = "year_released")
     private int yearReleased;
     private String genre;
     private String label;
+    @Column(name = "img_url")
     private String imgUrl;
 
     @ManyToOne

@@ -11,7 +11,9 @@ public class Band {
     private long id;
     private String name;
     private String genre;
+    @Column(name = "year_formed")
     private int yearFormed;
+    @Column(name = "img_url")
     private String imgUrl;
 
     @OneToMany(mappedBy = "band", cascade = CascadeType.ALL)
