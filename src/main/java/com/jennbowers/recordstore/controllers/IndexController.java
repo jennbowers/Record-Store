@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class IndexController {
 
@@ -46,8 +48,17 @@ public class IndexController {
         return "bands";
     }
 
+    @RequestMapping(value = "/bands", method = RequestMethod.POST)
+    public String bandsSearch (@RequestParam("search") String nameSearch,
+                               Model model) {
+        List<Band> bands = bandRepo.findByName(nameSearch);
+        model.addAttribute("bands", bands);
+        return "bands";
+    }
+
     @RequestMapping("/bands/add")
     public String addBands () {
+
         return "addBands";
     }
 
