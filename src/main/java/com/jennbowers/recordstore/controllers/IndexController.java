@@ -113,7 +113,32 @@ public class IndexController {
     }
 
     @RequestMapping("/songs/add")
-    public String addSongs () {
+    public String addSongs (Model model) {
+        Iterable<Band> bands = bandRepo.findAll();
+        model.addAttribute("bands", bands);
+
+        Iterable<Album> albums = albumRepo.findAll();
+        model.addAttribute("albums", albums);
+
         return "addSongs";
+    }
+
+    @RequestMapping(value = "/songs/add", method = RequestMethod.POST)
+    public String addSongsPost (@RequestParam("band") long bandId,
+                                @RequestParam("album") long albumId,
+                                @RequestParam("name") String name,
+                                @RequestParam("length") String length) {
+        Band band = bandRepo.findOne(bandId);
+        Album album = albumRepo.findOne(albumId);
+
+        Song newSong = new Song();
+        newSong.setName(name);
+        newSong.setLength(length);
+        newSong.setBand(band);
+        newSong.setAlbum(album);
+
+        songRepo.save(newSong);
+
+        return "redirect:/songs";
     }
 }
