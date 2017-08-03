@@ -36,4 +36,25 @@ public class IndexController {
 
         return "index";
     }
+
+    @RequestMapping("/bands")
+    public String bands (Model model) {
+        Iterable<Band> bands = bandRepo.findAll();
+        model.addAttribute("bands", bands);
+        return "bands";
+    }
+
+    @RequestMapping("/albums")
+    public String albums (Model model) {
+        Iterable<Album> albums = albumRepo.findAll();
+        model.addAttribute("albums", albums);
+        return "albums";
+    }
+
+    @RequestMapping("/songs")
+    public String songs (Model model) {
+        Iterable<Song> songs = songRepo.findAll();
+        model.addAttribute("songs", songs);
+        return "songs";
+    }
 }

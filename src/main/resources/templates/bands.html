@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>All Bands</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+    <div th:include="navbar :: navbar"></div>
+    <div class="all-body container">
+        <div class="all-bands">
+            <h2>All Bands </h2>
+            <div class="row">
+                <div th:each="band : ${bands}" class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img th:src="${band.imgUrl}" alt="band-image"/>
+                        <div class="caption">
+                            <h3 th:text="${band.name}"></h3>
+                            <div class="genre-div">
+                                <h5 class="genre-heading">Genre: </h5>
+                                <span th:text="${band.genre}" class="genre-body"></span>
+                            </div>
+                            <div class="year-formed-div">
+                                <h5 class="year-formed-heading">Year Formed: </h5>
+                                <span th:text="${band.yearFormed}" class="year-formed-body"></span>
+                            </div>
+                            <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+    </div>
+
+
+<script type="application/javascript" th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script type="application/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</body>
+</html>
