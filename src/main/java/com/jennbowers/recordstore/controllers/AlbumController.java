@@ -42,6 +42,14 @@ public class AlbumController {
         return "albums";
     }
 
+    @RequestMapping("/albums/{albumId}")
+    public String songDetail (@PathVariable("albumId") long albumId,
+                              Model model) {
+        Album album = albumRepo.findOne(albumId);
+        model.addAttribute("album", album);
+        return "albumDetail";
+    }
+
     @RequestMapping(value = "/albums/add", method = RequestMethod.GET)
     public String addAlbums (Model model) {
         Iterable<Band> bands = bandRepo.findAll();

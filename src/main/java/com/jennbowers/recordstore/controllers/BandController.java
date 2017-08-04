@@ -41,6 +41,14 @@ public class BandController {
         return "bands";
     }
 
+    @RequestMapping("/bands/{bandId}")
+    public String songDetail (@PathVariable("bandId") long bandId,
+                              Model model) {
+        Band band = bandRepo.findOne(bandId);
+        model.addAttribute("band", band);
+        return "bandDetail";
+    }
+
     @RequestMapping(value = "/bands/add", method = RequestMethod.GET)
     public String addBands () {
 
