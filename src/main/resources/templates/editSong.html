@@ -9,8 +9,11 @@
 <body>
 <div th:include="navbar :: navbar"></div>
 <div class="all-body container">
-    <h1>Add a New Song</h1>
-    <form class="form-horizontal" action="/songs/add" method="post">
+    <h1>
+        <span>Edit </span>
+        <span th:text="${song.name}"></span>
+    </h1>
+    <form class="form-horizontal" th:action="'/songs/edit/' + ${song.id}" method="post">
         <div class="form-group">
             <div class="col-sm-2"></div>
             <div class="col-sm-10">
@@ -38,18 +41,18 @@
         <div class="form-group">
             <label class="col-sm-2 control-label" for="name">Song Name:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="name" id="name"/>
+                <input type="text" class="form-control" name="name" id="name" th:value="${song.name}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label" for="length">Song Length:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="length" id="length"/>
+                <input type="text" class="form-control" name="length" id="length" th:value="${song.length}"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Add Song to Album</button>
+                <button type="submit" class="btn btn-danger">Edit Song</button>
             </div>
         </div>
 
@@ -57,7 +60,7 @@
 </div>
 
 
-<script type="application/javascript" th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
-<script type="application/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <script type="application/javascript" th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+    <script type="application/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </body>
 </html>

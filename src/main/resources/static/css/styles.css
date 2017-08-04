@@ -25,6 +25,10 @@
     padding-bottom: 12px;
 }
 
-.edit-btn {
+.add-btn {
     float: right;
+}
+
+.edit-btn {
+    margin-top: 15px;
 }

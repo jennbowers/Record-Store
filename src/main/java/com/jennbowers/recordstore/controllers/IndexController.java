@@ -9,6 +9,7 @@ import com.jennbowers.recordstore.repositories.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -81,6 +82,15 @@ public class IndexController {
         return "redirect:/bands";
     }
 
+    @RequestMapping(value = "/bands/edit/{bandId}", method = RequestMethod.GET)
+    public String editBand (@PathVariable("bandId") long bandId,
+                            Model model) {
+        Band band = bandRepo.findOne(bandId);
+
+        model.addAttribute("band", band);
+        return "editBand";
+    }
+
     @RequestMapping(value = "/albums", method = RequestMethod.GET)
     public String albums (Model model) {
         Iterable<Album> albums = albumRepo.findAll();
@@ -122,6 +132,15 @@ public class IndexController {
 
         return "redirect:/albums";
 
+    }
+
+    @RequestMapping(value = "/albums/edit/{albumId}", method = RequestMethod.GET)
+    public String editAlbum (@PathVariable("albumId") long albumId,
+                            Model model) {
+        Album album = albumRepo.findOne(albumId);
+
+        model.addAttribute("album", album);
+        return "editAlbum";
     }
 
     @RequestMapping(value = "/songs", method = RequestMethod.GET)
@@ -167,5 +186,19 @@ public class IndexController {
         songRepo.save(newSong);
 
         return "redirect:/songs";
+    }
+
+    @RequestMapping(value = "/songs/edit/{songId}", method = RequestMethod.GET)
+    public String editSong (@PathVariable("songId") long songId,
+                            Model model) {
+        Iterable<Band> bands = bandRepo.findAll();
+        model.addAttribute("bands", bands);
+
+        Iterable<Album> albums = albumRepo.findAll();
+        model.addAttribute("albums", albums);
+
+        Song song = songRepo.findOne(songId);
+        model.addAttribute("song", song);
+        return "editSong";
     }
 }
