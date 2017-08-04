@@ -25,7 +25,7 @@
     padding-bottom: 12px;
 }
 
-.add-btn {
+.add-btn, .see-all-btn {
     float: right;
 }
 

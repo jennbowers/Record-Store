@@ -75,4 +75,21 @@ public class BandController {
         return "editBand";
     }
 
+    @RequestMapping(value = "/bands/edit/{bandId}", method = RequestMethod.POST)
+    public String editBandPost (@PathVariable("bandId") long bandId,
+                            @RequestParam("name") String name,
+                            @RequestParam("genre") String genre,
+                            @RequestParam("yearFormed") int yearFormed,
+                            @RequestParam("imgUrl") String imgUrl,
+                            Model model) {
+        Band band = bandRepo.findOne(bandId);
+        band.setName(name);
+        band.setGenre(genre);
+        band.setYearFormed(yearFormed);
+        band.setImgUrl(imgUrl);
+        bandRepo.save(band);
+
+        return "redirect:/bands";
+    }
+
 }

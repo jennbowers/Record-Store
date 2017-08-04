@@ -43,6 +43,8 @@ public class SongController {
         return "songs";
     }
 
+
+
     @RequestMapping(value = "/songs/add", method = RequestMethod.GET)
     public String addSongs (Model model) {
         Iterable<Band> bands = bandRepo.findAll();
@@ -85,5 +87,24 @@ public class SongController {
         Song song = songRepo.findOne(songId);
         model.addAttribute("song", song);
         return "editSong";
+    }
+
+    @RequestMapping(value = "/songs/edit/{songId}", method = RequestMethod.POST)
+    public String editAlbumPost (@PathVariable("songId") long songId,
+                                 @RequestParam("band") long bandId,
+                                 @RequestParam("album") long albumId,
+                                 @RequestParam("name") String name,
+                                 @RequestParam("length") String length,
+                                 Model model) {
+        Band band = bandRepo.findOne(bandId);
+        Album album = albumRepo.findOne(albumId);
+        Song song = songRepo.findOne(songId);
+        song.setBand(band);
+        song.setAlbum(album);
+        song.setName(name);
+        song.setLength(length);
+        songRepo.save(song);
+
+        return "redirect:/songs";
     }
 }

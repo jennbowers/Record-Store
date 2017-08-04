@@ -36,7 +36,7 @@
                                 <h5 class="year-formed-heading">Year Formed: </h5>
                                 <span th:text="${band.yearFormed}" class="year-formed-body"></span>
                             </div>
-                            <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
+                            <a th:href="'/bands/edit/' + ${band.id}" class="btn btn-default btn-xs edit-btn" role="button">Edit</a>
                         </div>
                     </div>
                 </div>

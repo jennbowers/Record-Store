@@ -81,4 +81,27 @@ public class AlbumController {
         return "editAlbum";
     }
 
+    @RequestMapping(value = "/albums/edit/{albumId}", method = RequestMethod.POST)
+    public String editAlbumPost (@PathVariable("albumId") long albumId,
+                                @RequestParam("band") long bandId,
+                                @RequestParam("name") String name,
+                                @RequestParam("genre") String genre,
+                                @RequestParam("yearReleased") int yearReleased,
+                                @RequestParam("label") String label,
+                                @RequestParam("imgUrl") String imgUrl,
+                                Model model) {
+        Band band = bandRepo.findOne(bandId);
+        Album album = albumRepo.findOne(albumId);
+
+        album.setBand(band);
+        album.setName(name);
+        album.setGenre(genre);
+        album.setYearReleased(yearReleased);
+        album.setLabel(label);
+        album.setImgUrl(imgUrl);
+        albumRepo.save(album);
+
+        return "redirect:/albums";
+    }
+
 }
