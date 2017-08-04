@@ -40,7 +40,8 @@
                                 <h5 class="album-heading">Album: </h5>
                                 <span th:text="${song.album.name}" class="album-body"></span>
                             </div>
-                            <a th:href="'/songs/edit/' + ${song.id}" class="btn btn-default btn-xs edit-btn" role="button">Edit</a>
+                            <a th:href="'/songs/' + ${song.id}" class="btn btn-primary btn-block detail-btn" role="button">See Details</a>
+                            <a th:href="'/songs/edit/' + ${song.id}" class="btn btn-default btn-block edit-btn" role="button">Edit</a>
                         </div>
                     </div>
                 </div>

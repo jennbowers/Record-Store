@@ -29,6 +29,10 @@
     float: right;
 }
 
-.edit-btn {
+.edit-btn-detail {
+    margin-top: 15px;
+}
+
+.detail-btn {
     margin-top: 15px;
 }

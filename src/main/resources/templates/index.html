@@ -29,7 +29,8 @@
                                 <h5 class="year-formed-heading">Year Formed: </h5>
                                 <span th:text="${band.yearFormed}" class="year-formed-body"></span>
                             </div>
-                            <a th:href="'/bands/edit/' + ${band.id}" class="btn btn-default btn-xs edit-btn" role="button">Edit</a>
+                            <a th:href="'/bands/' + ${band.id}" class="btn btn-primary btn-block detail-btn" role="button">See Details</a>
+                            <a th:href="'/bands/edit/' + ${band.id}" class="btn btn-default btn-block edit-btn" role="button">Edit</a>
                         </div>
                     </div>
                 </div>
@@ -39,7 +40,7 @@
         <div class="all-albums">
             <div class="section-intro">
                 <h2 class="featured-heading">Featured Albums</h2>
-                <span class="edit-btn"><a href="/albums" type="button" class="btn btn-danger">See All Albums</a></span>
+                <span class="see-all-btn"><a href="/albums" type="button" class="btn btn-danger">See All Albums</a></span>
             </div>
             <div class="row">
                 <div th:each="album, iterStat : ${albums}" th:if="${iterStat.index >= iterStat.size-3}"  class="col-sm-6 col-md-4">
@@ -63,7 +64,8 @@
                                 <h5 class="label-heading">Label: </h5>
                                 <span th:text="${album.label}" class="label-body"></span>
                             </div>
-                            <a th:href="'/albums/edit/' + ${album.id}" class="btn btn-default btn-xs edit-btn" role="button">Edit</a>
+                            <a th:href="'/albums/' + ${album.id}" class="btn btn-primary btn-block detail-btn" role="button">See Details</a>
+                            <a th:href="'/albums/edit/' + ${album.id}" class="btn btn-default btn-block edit-btn" role="button">Edit</a>
                         </div>
                     </div>
                 </div>
@@ -73,7 +75,7 @@
         <div class="all-songs">
             <div class="section-intro">
                 <h2 class="featured-heading">Featured Songs</h2>
-                <span class="edit-btn"><a href="/songs" type="button" class="btn btn-danger">See All Songs</a></span>
+                <span class="see-all-btn"><a href="/songs" type="button" class="btn btn-danger">See All Songs</a></span>
             </div>
             <div class="row">
                 <div th:each="song, iterStat : ${songs}" th:if="${iterStat.index >= iterStat.size-3}"  class="col-sm-6 col-md-4">
@@ -93,7 +95,8 @@
                                 <h5 class="album-heading">Album: </h5>
                                 <span th:text="${song.album.name}" class="album-body"></span>
                             </div>
-                            <a th:href="'/songs/edit/' + ${song.id}" class="btn btn-default btn-xs edit-btn" role="button">Edit</a>
+                            <a th:href="'/songs/' + ${song.id}" class="btn btn-primary btn-block detail-btn" role="button">See Details</a>
+                            <a th:href="'/songs/edit/' + ${song.id}" class="btn btn-default btn-block edit-btn" role="button">Edit</a>
                         </div>
                     </div>
                 </div>

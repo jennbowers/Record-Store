@@ -7,7 +7,99 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
-    <h1>Song Detail</h1>
+    <div th:include="navbar :: navbar"></div>
+    <div class="all-body container">
+        <div class="song-detail">
+            <div class="section-intro">
+                <h2 class="featured-heading">Selected Song</h2>
+                <span class="see-all-btn"><a href="/songs" type="button" class="btn btn-danger">See All Songs</a></span>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="https://s-media-cache-ak0.pinimg.com/originals/b8/f7/87/b8f787d14ad16481760db7e4251ded5e.jpg" alt="band-image"/>
+                        <div class="caption">
+                            <h3>
+                                <span th:text="${song.name}"></span>
+                                —
+                                <span th:text="${song.band.name}"></span>
+                            </h3>
+                            <div class="length-div">
+                                <h5 class="length-heading">Song Length: </h5>
+                                <span th:text="${song.length}" class="length-body"></span>
+                            </div>
+                            <div class="album-div">
+                                <h5 class="album-heading">Album: </h5>
+                                <span th:text="${song.album.name}" class="album-body"></span>
+                            </div>
+                            <a th:href="'/songs/edit/' + ${song.id}" class="btn btn-default btn-block edit-btn-detail" role="button">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="all-albums">
+            <div class="section-intro">
+                <h2 class="featured-heading">Associated Album</h2>
+                <span class="see-all-btn"><a href="/albums" type="button" class="btn btn-danger">See All Albums</a></span>
+            </div>
+            <div class="row">
+                <div th:each="album : ${song.album}" class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img th:src="${album.imgUrl}" alt="album-image"/>
+                        <div class="caption">
+                            <h3>
+                                <span th:text="${album.name}"></span>
+                                —
+                                <span th:text="${album.band.name}"></span>
+                            </h3>
+                            <div class="genre-div">
+                                <h5 class="genre-heading">Genre: </h5>
+                                <span th:text="${album.genre}" class="genre-body"></span>
+                            </div>
+                            <div class="year-released-div">
+                                <h5 class="year-released-heading">Year Released: </h5>
+                                <span th:text="${album.yearReleased}" class="year-released-body"></span>
+                            </div>
+                            <div class="label-div">
+                                <h5 class="label-heading">Label: </h5>
+                                <span th:text="${album.label}" class="label-body"></span>
+                            </div>
+                            <a th:href="'/albums/edit/' + ${album.id}" class="btn btn-default btn-block edit-btn-detail" role="button">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="all-bands">
+            <div class="section-intro">
+                <h2 class="featured-heading">Associated Bands</h2>
+                <span class="see-all-btn"><a href="/bands" type="button" class="btn btn-danger">See All Bands</a></span>
+            </div>
+            <div class="row">
+                <!--https://stackoverflow.com/questions/33948685/spring-thymeleaf-show-last-two-elements-from-list-->
+                <div th:each="band : ${song.band}" class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img th:src="${band.imgUrl}" alt="band-image"/>
+                        <div class="caption">
+                            <h3 th:text="${band.name}"></h3>
+                            <div class="genre-div">
+                                <h5 class="genre-heading">Genre: </h5>
+                                <span th:text="${band.genre}" class="genre-body"></span>
+                            </div>
+                            <div class="year-formed-div">
+                                <h5 class="year-formed-heading">Year Formed: </h5>
+                                <span th:text="${band.yearFormed}" class="year-formed-body"></span>
+                            </div>
+                            <a th:href="'/songs/edit/' + ${song.id}" class="btn btn-default btn-block edit-btn-detail" role="button">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 <script type="application/javascript" th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>

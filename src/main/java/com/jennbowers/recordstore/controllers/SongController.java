@@ -43,7 +43,13 @@ public class SongController {
         return "songs";
     }
 
-
+    @RequestMapping("/songs/{songId}")
+    public String songDetail (@PathVariable("songId") long songId,
+                              Model model) {
+        Song song = songRepo.findOne(songId);
+        model.addAttribute("song", song);
+        return "songDetail";
+    }
 
     @RequestMapping(value = "/songs/add", method = RequestMethod.GET)
     public String addSongs (Model model) {
