@@ -73,8 +73,10 @@ public class AlbumController {
     @RequestMapping(value = "/albums/edit/{albumId}", method = RequestMethod.GET)
     public String editAlbum (@PathVariable("albumId") long albumId,
                              Model model) {
-        Album album = albumRepo.findOne(albumId);
+        Iterable<Band> bands = bandRepo.findAll();
+        model.addAttribute("bands", bands);
 
+        Album album = albumRepo.findOne(albumId);
         model.addAttribute("album", album);
         return "editAlbum";
     }
