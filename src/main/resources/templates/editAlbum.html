@@ -22,6 +22,7 @@
             <label class="col-sm-2 control-label" for="band-name">Band Name:</label>
             <div class="col-sm-10" id="band-name">
                 <select class="form-control" name="band">
+                    <!-- th:selected came from https://github.com/thymeleaf/thymeleaf/issues/276-->
                     <option th:text="${band.name}" th:value="${band.id}" th:selected="${album.band.id == band.id}" th:each="band : ${bands}"></option>
                 </select>
             </div>
